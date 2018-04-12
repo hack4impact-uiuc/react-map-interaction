@@ -73,6 +73,7 @@ class MapInteraction extends Component {
       initialY: 0,
       minScale: 0.05,
       maxScale: 3,
+      initialScale: 1,
       showControls: false
     };
   }
@@ -82,7 +83,7 @@ class MapInteraction extends Component {
     super(props);
 
     this.state = {
-      scale: props.scale ? props.scale : 1,
+      scale: props.initialScale,
       translation: {
         x: -props.initialX,
         y: -props.initialY
