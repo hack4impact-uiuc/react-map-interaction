@@ -32,7 +32,11 @@ import { MapInteraction } from 'react-map-interaction';
 const ImInControl = () => {
   <MapInteraction>
     {
-      ({ translation, scale }) => { /* Use the passed values to scale content on your own. */ }
+      ({ translation, scale }, setTranslationScale) => { 
+          /* Use the passed values to scale content on your own.
+             setTranslationScale(translation, scale) will set
+             translation and scale to the specified parameters. */ 
+        }
     }
   </MapInteraction>
 }
@@ -44,6 +48,7 @@ const ImInControl = () => {
   // Initial x/y coordinates
   initialX: PropTypes.number,
   initialY: PropTypes.number,
+  initialScale: PropTypes.number,
 
   // The min and max of the scale of the zoom. Must be > 0.
   minScale: PropTypes.number,
