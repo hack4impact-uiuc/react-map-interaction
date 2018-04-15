@@ -133,6 +133,8 @@ var MapInteraction = function (_Component) {
     _this.onTouchEnd = _this.onTouchEnd.bind(_this);
 
     _this.onWheel = _this.onWheel.bind(_this);
+
+    _this.setTranslationScale = _this.setTranslationScale.bind(_this);
     return _this;
   }
 
@@ -396,6 +398,14 @@ var MapInteraction = function (_Component) {
       });
     }
   }, {
+    key: 'setTranslationScale',
+    value: function setTranslationScale(translation, scale) {
+      this.setState({
+        scale: scale,
+        translation: translation
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this3 = this;
@@ -427,7 +437,7 @@ var MapInteraction = function (_Component) {
             }
           }
         },
-        (children || undefined) && children({ translation: translation, scale: scale }),
+        (children || undefined) && children({ translation: translation, scale: scale }, this.setTranslationScale),
         (showControls || undefined) && this.renderControls()
       );
     }

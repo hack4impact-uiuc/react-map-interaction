@@ -103,6 +103,8 @@ class MapInteraction extends Component {
     this.onTouchEnd = this.onTouchEnd.bind(this);
 
     this.onWheel = this.onWheel.bind(this);
+
+    this.setTranslationScale = this.setTranslationScale.bind(this);
   }
 
   componentDidMount() {
@@ -325,6 +327,13 @@ class MapInteraction extends Component {
     );
   }
 
+  setTranslationScale(translation, scale) {
+    this.setState({
+      scale,
+      translation
+    })
+  }
+
   render() {
     const { showControls, children } = this.props;
     const { scale, translation } = this.state;
@@ -345,7 +354,7 @@ class MapInteraction extends Component {
           }
         }}
       >
-        {(children || undefined) && children({ translation, scale })}
+        {(children || undefined) && children({ translation, scale }, this.setTranslationScale)}
         {(showControls || undefined) && this.renderControls()}
       </div>
     );
