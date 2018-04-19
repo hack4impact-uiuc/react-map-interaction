@@ -28,7 +28,10 @@ var clamp = function clamp(min, value, max) {
 };
 
 var isTouchDevice = function isTouchDevice() {
-  return 'ontouchstart' in window || navigator.MaxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+  return false;
+  // return (('ontouchstart' in window) ||
+  //   (navigator.MaxTouchPoints > 0) ||
+  //   (navigator.msMaxTouchPoints > 0));
 };
 
 var eventNames = function eventNames() {
@@ -133,6 +136,8 @@ var MapInteraction = function (_Component) {
     _this.onTouchEnd = _this.onTouchEnd.bind(_this);
 
     _this.onWheel = _this.onWheel.bind(_this);
+
+    _this.handlers = _this.handlers.bind(_this);
 
     _this.setTranslationScale = _this.setTranslationScale.bind(_this);
     return _this;
@@ -550,7 +555,7 @@ var Controls = function (_Component2) {
 
       return _react2.default.createElement(
         'div',
-        { style: { position: 'absolute', right: 10, top: 10 } },
+        { style: { position: 'absolute', right: 10, bottom: 10 } },
         _react2.default.createElement(
           'div',
           null,

@@ -4,9 +4,10 @@ import PropTypes from 'prop-types';
 const clamp = (min, value, max) => Math.max(min, Math.min(value, max));
 
 const isTouchDevice = () => {
-  return (('ontouchstart' in window) ||
-    (navigator.MaxTouchPoints > 0) ||
-    (navigator.msMaxTouchPoints > 0));
+  return false;
+  // return (('ontouchstart' in window) ||
+  //   (navigator.MaxTouchPoints > 0) ||
+  //   (navigator.msMaxTouchPoints > 0));
 }
 
 const eventNames = () => {
@@ -103,6 +104,8 @@ class MapInteraction extends Component {
     this.onTouchEnd = this.onTouchEnd.bind(this);
 
     this.onWheel = this.onWheel.bind(this);
+
+    this.handlers = this.handlers.bind(this)
 
     this.setTranslationScale = this.setTranslationScale.bind(this);
   }
@@ -440,7 +443,7 @@ class Controls extends Component {
     const btnStyle = btnClass ? undefined : { width: 30, paddingTop: 5, marginBottom: 5 };
 
     return (
-      <div style={{ position: 'absolute', right: 10, top: 10 }}>
+      <div style={{ position: 'absolute', right: 10, bottom: 10 }}>
         <div>
           <button
             ref={(node) => { this.plusNode = node; }}
