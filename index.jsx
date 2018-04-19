@@ -4,7 +4,9 @@ import PropTypes from 'prop-types';
 const clamp = (min, value, max) => Math.max(min, Math.min(value, max));
 
 const isTouchDevice = () => {
+  // hacky fix for fixing mouse support
   return false;
+  
   // return (('ontouchstart' in window) ||
   //   (navigator.MaxTouchPoints > 0) ||
   //   (navigator.msMaxTouchPoints > 0));
